@@ -50,13 +50,19 @@ P = 2, // Smooth motion (higher number = smoother motion)
 // Mouse events
 M = {
 	down: function(e) {
-		R.onX = -w2 + e.clientX;
+		if (!e.clientX) {
+			// Touch screen
+			R.onX = -w2 + e.touches[0].clientX;
+		} else R.onX = -w2 + e.clientX;
 		R.oldX = R.x;
 		document.addEventListener("mousemove", M.move);
 		document.addEventListener("touchmove", M.move)
 	},
 	move: function(e) {
-		R.nowX = -w2 + e.clientX;
+		if (!e.clientX) {
+			// Touch screen
+			R.nowX = -w2 + e.touches[0].clientX
+		} else R.nowX = -w2 + e.clientX;
 		R.x = ((R.nowX - R.onX) / S) + R.oldX;
 		if (R.x < -60) R.x = -60;
 		if (R.x > 60) R.x = 60;
@@ -80,8 +86,8 @@ object = document.querySelector(".object");
 
 // Event listeners
 addEventListener("mousedown", M.down);
-addEventListener("mouseup", M.up);
 addEventListener("touchstart", M.down);
+addEventListener("mouseup", M.up);
 addEventListener("touchend", M.up);
 
 // Set time on watch
