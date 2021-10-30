@@ -8,8 +8,9 @@ header {
 
 h1 {
 	margin: 0;
-	font-family: "SF Medium";
-	font-size: 28px
+	font-family: "SF Semibold";
+	font-size: 28px;
+	letter-spacing: 0.5px
 }
 
 p {
