@@ -52,7 +52,8 @@ M = {
 	down: function(e) {
 		R.onX = -w2 + e.clientX;
 		R.oldX = R.x;
-		document.addEventListener("mousemove", M.move)
+		document.addEventListener("mousemove", M.move);
+		document.addEventListener("touchmove", M.move)
 	},
 	move: function(e) {
 		R.nowX = -w2 + e.clientX;
@@ -70,13 +71,18 @@ M = {
 		shade.style.borderRadius = (R.x > 0) ? "20px 0 0 20px" : "0 20px 20px 0";
 		shade.style.opacity = Math.abs(R.x / 60)
 	},
-	up: function() {document.removeEventListener("mousemove", M.move)}
+	up: function() {
+		document.removeEventListener("mousemove", M.move);
+		document.removeEventListener("touchmove", M.move)
+	}
 },
 object = document.querySelector(".object");
 
 // Event listeners
 addEventListener("mousedown", M.down);
 addEventListener("mouseup", M.up);
+addEventListener("touchstart", M.down);
+addEventListener("touchend", M.up);
 
 // Set time on watch
 screen.style.color = "#777";
