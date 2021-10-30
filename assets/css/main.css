@@ -1,0 +1,24 @@
+/** Main styles **/
+
+/* CSS imports */
+@import url(../fonts/fonts.css);
+@import url(header.css);
+@import url(footer.css);
+@import url(watch.css);
+@import url(keyframes.css);
+
+/* Background */
+html, body {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	overflow-x: hidden;
+	background: #000 url(../images/logo.png) center repeat-y;
+	background-size: 90%;
+	color: #fff;
+	text-align: center;
+	font-family: "SF Regular";
+	user-select: none
+}
