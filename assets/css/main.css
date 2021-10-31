@@ -4,8 +4,10 @@
 @import url(../fonts/fonts.css);
 @import url(header.css);
 @import url(footer.css);
-@import url(watch.css);
 @import url(keyframes.css);
+@import url(watch.css);
+@import url(screen.css);
+@import url(shade.css);
 
 /* Background */
 html, body {
@@ -15,10 +17,11 @@ html, body {
 	height: 100%;
 	margin: 0;
 	overflow-x: hidden;
-	background: #000 url(../images/logo.png) center repeat-y;
+	background: #000 url(../images/logo.png) center no-repeat;
 	background-size: 90%;
 	color: #fff;
-	text-align: center;
 	font-family: "SF Regular";
+	text-align: center;
 	user-select: none
 }
+body:active {cursor: ew-resize}

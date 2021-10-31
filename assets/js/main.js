@@ -1,14 +1,16 @@
-const time = document.querySelector(".watch-time"),
-date = document.querySelector(".watch-date"),
-screen = document.querySelector(".screen"),
+const watch = document.querySelector(".object"),
 shade = document.querySelector(".shade"),
+screen = document.querySelector(".screen"),
+time = document.querySelector(".time"),
+date = document.querySelector(".date"),
 setDate = function() {
-	// This sets the date and time on the watch object
-	var D = new Date(),
-	d = D.getDay(),
-	n = D.getDate(),
-	h = D.getHours(),
-	m = D.getMinutes();
+	// Set the current date and time on the watch
+	let D = new Date(),
+	d = D.getDay(), // Day name
+	n = D.getDate(), // Day index in the month
+	h = D.getHours(), // Hour
+	m = D.getMinutes(); // Minute
+	// Day
 	switch (d) {
 		case 1:
 			d = "MON";
@@ -29,13 +31,18 @@ setDate = function() {
 			d = "SAT";
 		break;
 		default:
+			// Case 0, Sunday
 			d = "SUN"
 	}
+	// Hour
 	(h < 10) ? h = `0${h}` : h;
+	// Minute
 	(m < 10) ? m = `0${m}` : m;
-	time.textContent = `${h}:${m}`;
-	date.textContent = `${d} ${n}`
+	// Append date & time to elements
+	date.textContent = `${d} ${n}`;
+	time.textContent = `${h}:${m}`
 },
+// Movement
 R = {
 	x: 0,
 	nowX: 0,
@@ -52,7 +59,7 @@ M = {
 	down: function(e) {
 		if (!e.clientX) {
 			// Touch screen
-			R.onX = -w2 + e.touches[0].clientX;
+			R.onX = -w2 + e.touches[0].clientX
 		} else R.onX = -w2 + e.clientX;
 		R.oldX = R.x;
 		document.addEventListener("mousemove", M.move);
@@ -66,10 +73,10 @@ M = {
 		R.x = ((R.nowX - R.onX) / S) + R.oldX;
 		if (R.x < -60) R.x = -60;
 		if (R.x > 60) R.x = 60;
-		transform = `rotateY(${R.x.toFixed(P)}deg)`;
+		let transform = `rotateY(${R.x.toFixed(P)}deg)`;
 		// Object motion
-		object.style["-webkit-transform"] = transform;
-		object.style.transform = transform;
+		watch.style["-webkit-transform"] = transform;
+		watch.style.transform = transform;
 		// Shade rotation
 		shade.style.width = `${(48 - (Math.abs(R.x) / 60) * 44)}mm`;
 		shade.style.height = `${(48 - (Math.abs(R.x) / 60) * 4)}mm`;
@@ -81,8 +88,7 @@ M = {
 		document.removeEventListener("mousemove", M.move);
 		document.removeEventListener("touchmove", M.move)
 	}
-},
-object = document.querySelector(".object");
+};
 
 // Event listeners
 addEventListener("mousedown", M.down);
@@ -90,9 +96,10 @@ addEventListener("touchstart", M.down);
 addEventListener("mouseup", M.up);
 addEventListener("touchend", M.up);
 
-// Set time on watch
-screen.style.color = "#777";
-screen.style["-webkit-filter"] = "brightness(100%)";
-screen.style.filter = "brightness(100%)";
-setDate();
-setInterval(setDate, 1000)
+// Turn on watch and update time
+setTimeout(function() {
+	screen.style["-webkit-filter"] = "brightness(100%)";
+	screen.style.filter = "brightness(100%)"
+	setDate();
+	setInterval(setDate, 1000)
+}, 500)

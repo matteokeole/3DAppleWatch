@@ -23,8 +23,13 @@
 		<meta property="og:description" content="A 3D interactive Apple Watch reflection effect made with vanilla JS.">
 		<meta property="og:image" content="https://matteoo34.github.io/3DAppleWatch/assets/images/logo-og.png">
 		<meta name="twitter:card" content="summary_large_image">
+		<!-- Ionicons 5.5.2 -->
+		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+		<!-- Favicon -->
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="apple-touch-icon" type="image/x-icon" href="favicon.ico">
+		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 		<title>3D Interactive Apple Watch Animation</title>
 	</head>
@@ -34,22 +39,21 @@
 		<header>
 			<h1>Apple Watch Reflection Effect</h1>
 			<p>
-				<ion-icon name="caret-back-outline"></ion-icon>
+				<ion-icon name="chevron-back-outline"></ion-icon>
 				Try moving the watch
-				<ion-icon name="caret-forward-outline"></ion-icon>
+				<ion-icon name="chevron-forward-outline"></ion-icon>
 			</p>
 		</header>
 
-		<!-- Object -->
+		<!-- Watch -->
 		<div class="object-container">
 			<div class="object">
 				<div class="shade"></div>
-				<div class="front">
-					<div class="screen">
-						<div class="date-container">
-							<span class="watch-time"></span><br>
-							<span class="watch-date"></span>
-						</div class="date-container">
+				<div class="screen">
+					<div class="info-container">
+						<div class="date"></div>
+						<div class="time"></div>
+						<div class="meteo">SUNNY</div>
 					</div>
 				</div>
 			</div>
@@ -61,11 +65,8 @@
 			All rights reserved.
 		</footer>
 
-		<!-- Scripts -->
+		<!-- JS -->
 		<script src="assets/js/main.js"></script>
-		<!-- Ionicons 5.5.2 -->
-		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-		<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 	</body>
 
 </html>
